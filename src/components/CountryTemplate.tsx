@@ -1,4 +1,5 @@
-import {numberFormat} from "./assets/numberFormat"
+import {numberFormat} from "./numberFormat"
+import countries from "./FetchData"
 export function CountryTemplate (props) { 
 		const { 
 			country,

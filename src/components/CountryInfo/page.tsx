@@ -5,6 +5,7 @@ import { FC } from "react";
 import {useSearchParams, usePathname} from "next/navigation";
 import { numberFormat } from "../numberFormat.js"
 import {BorderComponent} from "../BorderComponent"
+import Countries from "../FetchData.jsx"
 
 type Props  = {
 		id: string;
@@ -12,10 +13,17 @@ type Props  = {
 }
 
 export const CountryInfo :FC<Props> = (Props) => {
+	const [countries, setCountries] = useState(Countries.then((value) => {return value	}));
 	const searchParams = useSearchParams();
-    const modal = searchParams.get("");
+    let modal
     const pathname = usePathname();
+	console.log({Countries})
 
+	useEffect(()=>{
+		for (var i = 0; i < countriesountries.length; i++) {
+			let modal = searchParams.get({`?${countries[i].name.common}`})
+		}
+	}, [])
 	return (
 		<>
 			{

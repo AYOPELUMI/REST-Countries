@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-undef */
-/* eslint-disable no-mixed-spaces-and-tabs */
+import countries from "./FetchData.jsx"
+
 export function BorderComponent(props) {
 	const {
 		country,
@@ -9,7 +8,7 @@ export function BorderComponent(props) {
 		updateIsSelectedCountry
 	} = props
 	const bdrArray = []
-	
+console.log({countries})	
 
 	const handleSelectBorderCountry = (event) =>{
 		let index = event.target.getAttribute('index')
