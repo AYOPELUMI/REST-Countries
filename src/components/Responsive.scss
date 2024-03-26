@@ -1,0 +1,40 @@
+@import "./mobileDesign.scss";
+
+.restBody{
+    @include xs{
+        .restHeader{
+            padding: 12px 10px;
+
+            h2{
+                font-size: 15px;
+                line-height: 19px;
+                text-wrap: nowrap;
+            }
+            .themeIcon{
+                svg{
+                    font-size: 13px;
+                }
+                p{
+                    font-size: 14px;
+                    line-height: 15px;
+                    text-wrap: nowrap;
+                }
+            }
+
+        }
+        .searchCtnr{
+            padding: 12px 10px;
+            flex-direction: column;
+            width: 100%;
+            gap: 16px;
+
+            .searchInput{
+                width: 90%;
+                padding: 6px 12px;
+            }
+            .dropdown{
+                width: fit-content;
+            }
+        }
+    }
+}
