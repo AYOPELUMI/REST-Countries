@@ -61,7 +61,7 @@ export default  function Home() {
 	for (var i = 0; i < searchedCountries.length; i++) {
 
 		const Country_El=(
-			<Link href={`?${searchedCountries[i].name.common}==true`}>
+			<Link href={`${searchedCountries[i].name.common}`}>
 				<CountryTemplate 
 					country={searchedCountries[i]}
 					onClick={handleSelectCountry}

@@ -3,31 +3,19 @@ import Link from "next/link";
 import {AiOutlineArrowLeft} from "react-icons/ai"
 import { FC } from "react";
 import {useSearchParams, usePathname} from "next/navigation";
-import { numberFormat } from "../numberFormat.js"
-import {BorderComponent} from "../BorderComponent"
-import Countries from "../FetchData.jsx"
+import { numberFormat } from "../../components/numberFormat.js"
+import {BorderComponent} from "../../components/BorderComponent"
 
 type Props  = {
-		id: string;
-		country: Object;
+		id: string
 }
 
-export const CountryInfo :FC<Props> = (Props) => {
-	const [countries, setCountries] = useState(Countries.then((value) => {return value	}));
-	const searchParams = useSearchParams();
-    let modal
-    const pathname = usePathname();
-	console.log({Countries})
+export default function CountryInfo :FC<Props>(Props){
 
-	useEffect(()=>{
-		for (var i = 0; i < countriesountries.length; i++) {
-			let modal = searchParams.get({`?${countries[i].name.common}`})
-		}
-	}, [])
+    const pathname = usePathname();
+
 	return (
 		<>
-			{
-				modal && 
 				<div className="countryCtnr">
 					<Link href={pathname}>
 						<button className="backButton">
@@ -36,7 +24,7 @@ export const CountryInfo :FC<Props> = (Props) => {
 						</button>
 					</Link>
 					<div className="countryInfo">
-						<img src={Props.country.flags.png} alt={country.flags.alt} />
+						<img src={Props.country.flags.png} alt={Props.country.flags.alt} />
 						<div className="infoCtnr">
 							<h3>{Props.country.name.common}</h3>
 							<div className="moreInfo">
@@ -61,7 +49,6 @@ export const CountryInfo :FC<Props> = (Props) => {
 						</div>
 					</div>
 				</div>
-			}
 		</>
 	);
 }
