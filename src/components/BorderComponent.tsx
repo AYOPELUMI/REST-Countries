@@ -1,25 +1,15 @@
-import countries from "./FetchData.jsx"
+import { useContext } from "react"
+import Link from "next/link"
+import { CountryContext } from "./Context/CountryContext"
 
 export function BorderComponent(props) {
 	const {
-		country,
-		newCountries,
-		updateSearchedCountries,
-		updateIsSelectedCountry
+		country
 	} = props
+	const countries = useContext(CountryContext)
 	const bdrArray = []
 console.log({countries})	
 
-	const handleSelectBorderCountry = (event) =>{
-		let index = event.target.getAttribute('index')
-		const clone =[]
-		index = Number(index)
-		const new_El = newCountries[index]
-		console.log({new_El})
-		clone.push(new_El)
-		updateSearchedCountries(clone)
-		updateIsSelectedCountry(true)
-	}
 
 
 	if (country.borders != undefined) {
@@ -29,10 +19,11 @@ console.log({countries})
 
 				let searchedValue = country.borders[i].toLocaleUpperCase()
 				console.log({searchedValue})
-				for (var j = 0; j < newCountries.length; j++) {
-		  			let countryName = newCountries[j].cca3 ? newCountries[j].cca3 : newCountries[j].cioc
+				for (var j = 0; j < countries.length; j++) {
+		  			let countryName = countries[j].cca3 ? countries[j].cca3 : countries[j].cioc
 					if ( 0 == countryName.search(searchedValue)) {
-						const bdr_El = <button key={j} className="borderBtn" onClick={handleSelectBorderCountry} index={j}>{newCountries[j].name.common}</button>
+						console.log(String(countries[j].name.common).replace(/ /g,""))
+						const bdr_El = <Link key={j} className="borderBtn" href={`${(countries[j].name.common).replace(/ /g,"")}`} index={j}>{countries[j].name.common}</Link>
 
 						bdrArray.push(bdr_El)
 						break;

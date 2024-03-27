@@ -1,21 +1,36 @@
 'use client'
 import Link from "next/link";
 import {AiOutlineArrowLeft} from "react-icons/ai"
-import { FC } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import {useSearchParams, usePathname} from "next/navigation";
 import { numberFormat } from "../../components/numberFormat.js"
 import {BorderComponent} from "../../components/BorderComponent"
+import { CountryContext } from "@/components/Context/CountryContext";
+import "../../components/REST.scss"
+import "../../components/index.css"
 
 type Props  = {
-		id: string
+		params: {
+			slug: String
+		}
 }
 
-export default function CountryInfo :FC<Props>(Props){
+export default function CountryInfo (Props :FC<Props>){
+	let countries = useContext(CountryContext)
+    const pathname = usePathname()
+	const [country, setCountry] = useState([])
+	console.log(country)
+	console.log(Props.params.slug)
+	console.log({countries})
 
-    const pathname = usePathname();
-
+	useEffect(() => {
+		setCountry(countries.filter((value) => {return (value.name.common).replace(/ /g,"") == Props.params.slug}))
+		console.log({country})
+	}, [countries])
+	console.log(country[0])
 	return (
 		<>
+			{country.length != 0 ?
 				<div className="countryCtnr">
 					<Link href={pathname}>
 						<button className="backButton">
@@ -24,31 +39,30 @@ export default function CountryInfo :FC<Props>(Props){
 						</button>
 					</Link>
 					<div className="countryInfo">
-						<img src={Props.country.flags.png} alt={Props.country.flags.alt} />
+						<img src={country[0].flags.png} alt={country[0].flags.alt} />
 						<div className="infoCtnr">
-							<h3>{Props.country.name.common}</h3>
+							<h3>{country[0].name.common}</h3>
 							<div className="moreInfo">
-								<span>Native Name :	<p>{countryNativeName}</p></span>
-								<span>Population : <p>{numberFormat(country.population)}</p></span>
-								<span>Region : <p>{country.region}</p></span>
-								<span>Sub Region : <p>{country.subregion}</p></span>
-								<span>Capital : <p>{country.capital}</p></span>
-								{CountQueuingStrategy.tld ? <span>Top Level Domain : <p>{country.tld[0]}</p></span> : null}
-								<span>Currencies : <p>{Object.values(country.currencies)[0].name}</p></span>
-								<span>Languages : {(Object.values(country.languages)).map((value,index) => { return <p key={index}> {value}</p>})}</span>
+								{/* <span>Native Name :	<p>{country[0].name.nativeName}</p></span> */}
+								<span>Population : <p>{numberFormat(country[0].population)}</p></span>
+								<span>Region : <p>{country[0].region}</p></span>
+								<span>Sub Region : <p>{country[0].subregion}</p></span>
+								{<span>Capital : <p>{country[0].capital}</p></span> }
+								{country[0].tld ? <span>Top Level Domain : <p>{country[0].tld[0]}</p></span> : null }
+								<span>Currencies : <p>{Object.values(country[0].currencies)[0].name}</p></span>
+								<span>Languages : {(Object.values(country[0].languages)).map((value,index) => { return <p key={index}> {value}</p>})}</span>
 							</div>
 							<div className="borderCtnr">
 								<h2>Border Countries : </h2>
 								<BorderComponent 
-									country={country}
-									newCountries={newCountries}
-									updateSearchedCountries={updateSearchedCountries}
-									updateIsSelectedCountry={updateIsSelectedCountry} 
+									country={country[0]} 
 								/>
 							</div>
 						</div>
 					</div>
 				</div>
+			: null
+			}
 		</>
 	);
 }

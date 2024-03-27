@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playball:wght@300;400;500;600&display=swap');
+
+:root {
+    --REST-Country-bg-color:hsl(0, 0%, 98%);
+    --font-color: hsl(0, 0%, 52%);
+    --header-color: hsl(200, 15%, 8%);
+    --REST-Header-bg-color: hsl(0, 0%, 98%);
+    --REST-Countries-Container-bg-color: hsl(0, 0%, 98%);
+    --REST-GoBack-btn-bg-color:hsl(0, 0%, 100%);
+    --REST-li-hover: lightgray;
+}
+
+[data-theme="dark"] {
+    --header-color: hsl(0, 0%, 100%);
+    --REST-Country-bg-color: #2b3743;
+    --font-color: hsl(0, 0%, 100%);
+    --REST-Header-bg-color: #2b3743;
+    --REST-Countries-Container-bg-color: hsl(207, 26%, 17%);
+    --REST-GoBack-btn-bg-color: #2b3743;
+    --REST-li-hover: #1b1818;
+}
+*{
+	font-family: 'Mouse Memoirs', sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
