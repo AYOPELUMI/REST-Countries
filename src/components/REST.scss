@@ -225,6 +225,7 @@
 						p{
 							font-weight: normal;
 							color: var(--font-color);
+							font-size: inherit;
 						}
 					}
 				}
@@ -236,6 +237,7 @@
 					flex-direction: column;
 					h2{
 						font-size: 28px;
+						line-height: 30px;
 						color: var(--header-color);
 						margin-right: 15px;
 						font-weight: 600;
