@@ -3,6 +3,7 @@ import Image from "next/image";
 import {useEffect, useState,useContext} from "react"
 import Link from "next/link"
 import "../components/REST.scss"
+import "@/components/index.css"
 import "../components/Responsive.scss"
 import {AiOutlineArrowLeft} from "react-icons/ai"
 import { BsFillMoonFill } from "react-icons/bs";
