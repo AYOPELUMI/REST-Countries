@@ -13,13 +13,11 @@ import { ThemeContextWrapper } from "@/components/ThemeContextWrapper.jsx";
 import { ThemeContext } from "@/components/ThemeContext.js";
 import { BsFillMoonFill } from "react-icons/bs";
 
-type Props  = {
-		params: {
-			slug: String
-		}
-}
 
-export default function CountryInfo (Props :FC<Props>){
+export default function CountryInfo (Props){
+	const {
+		params
+	} = Props
 	let countries = useContext(CountryContext)
     const pathname = usePathname("/")
 	const [country, setCountry] = useState([])
