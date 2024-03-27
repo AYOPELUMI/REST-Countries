@@ -29,38 +29,13 @@ useEffect(() => {
 	console.log({countries})
 	setSearchedCountries(countries)
 }, [countries])
-	const handleSelectCountry = (event) =>{
-		event.stopPropagation()
-		console.log(event.target)
-		const index = event.target.getAttribute('index')
-		const clone =[]
-		console.log({index})
-		const new_El = searchedCountries[index]
 
-		clone.push(new_El)
-		setSearchedCountries(clone)
-		setIsSelectedCountry(true)
-	}
 
-	const handleGoBackEvent = () => {
-		setIsSelectedCountry(false);
-		console.log({searchedValue})
-		console.log(searchedCountries.length,countries.length,countries.length)
-		const clone = new Array()
-			for (var i = 0; i < countries.length; i++) {
-				countries[i].name.common.search(searchedValue);
-				if ( 0 == countries[i].name.common.toLocaleUpperCase().search(searchedValue.toLocaleUpperCase())) {
-					clone.push(countries[i]);
-				}
-			}
-		setSearchedCountries(clone);
-		console.log({searchedValue});
-	}
 	for (var i = 0; i < searchedCountries.length; i++) {
 		let countryname = searchedCountries[i].name.common
 		console.log(countryname.toString)
 		const Country_El=(
-			<Link href={`${searchedCountries[i].name.common}`}>
+			<Link key={i} href={`${(searchedCountries[i].name.common).replace(/ /g,"")}`}>
 				<CountryTemplate 
 					country={searchedCountries[i]}
 					Key={i}

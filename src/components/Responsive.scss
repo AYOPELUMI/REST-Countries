@@ -57,5 +57,24 @@
                 }
             }
         }
+        .countryCtnr{
+            padding: 40px 15px;
+            gap: 40px;
+
+            .countryInfo{
+                flex-direction: column;
+                gap: 40px;
+
+                img{
+                    max-width: 90%;
+                }
+                .infoCtnr{
+                    h3{
+                        font-size: 24px;
+                        line-height: 25px;
+                    }
+                }
+            }
+        }
     }
 }

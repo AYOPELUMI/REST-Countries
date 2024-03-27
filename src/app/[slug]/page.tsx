@@ -6,8 +6,9 @@ import {useSearchParams, usePathname} from "next/navigation";
 import { numberFormat } from "../../components/numberFormat.js"
 import {BorderComponent} from "../../components/BorderComponent"
 import { CountryContext } from "@/components/Context/CountryContext";
-import "../../components/REST.scss"
 import "../../components/index.css"
+import "../../components/REST.scss"
+import"@/components/Responsive.scss"
 import { ThemeContextWrapper } from "@/components/ThemeContextWrapper.jsx";
 import { ThemeContext } from "@/components/ThemeContext.js";
 import { BsFillMoonFill } from "react-icons/bs";
@@ -28,7 +29,7 @@ export default function CountryInfo (Props :FC<Props>){
 	console.log({countries})
 
 	useEffect(() => {
-		setCountry(countries.filter((value) => {return (value.name.common).replace(/ /g,"") == Props.params.slug}))
+		setCountry(countries.filter((value) => {return (value.name.common).replace(/ /g,"") == (Props.params.slug).replace(/ /g,"")}))
 		console.log({country})
 	}, [countries])
 	console.log(country[0])
@@ -50,7 +51,7 @@ export default function CountryInfo (Props :FC<Props>){
 						)}
 					</ThemeContext.Consumer> 
 			</header>
-			{country.length != 0 ?
+			{country[0] != undefined ?
 				<div className="countryCtnr">
 					<Link href="/" replace className="backButton">
 							<AiOutlineArrowLeft />

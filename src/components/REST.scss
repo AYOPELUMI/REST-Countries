@@ -86,12 +86,13 @@
 					width: 100%;
 					background: inherit;
 					border: none;
-					padding: 10px 15px;
+					padding: 7px 15px;
 					font: inherit;
 					cursor: pointer;
 					text-align: left;
-					font-size: 18px;
+					font-size: 16px;
 					color: var(--font-color);
+					line-height: 15px;
 
 					&:hover{
 						background-color: var(--REST-li-hover);
