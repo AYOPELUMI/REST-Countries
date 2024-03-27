@@ -36,5 +36,26 @@
                 width: fit-content;
             }
         }
+        .countriesCtnr{
+            display: flex;
+            flex-direction: column;
+
+            
+            .country{
+                height: 250px;
+                img{
+                    height: 110px;
+                }
+                .countryName{
+                    margin: 7px 0px;
+                    font-size: 18px;
+                }
+                div{
+                    p{
+                        text-wrap: nowrap;
+                    }
+                }
+            }
+        }
     }
 }
