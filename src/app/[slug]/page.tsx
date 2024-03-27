@@ -8,6 +8,9 @@ import {BorderComponent} from "../../components/BorderComponent"
 import { CountryContext } from "@/components/Context/CountryContext";
 import "../../components/REST.scss"
 import "../../components/index.css"
+import { ThemeContextWrapper } from "@/components/ThemeContextWrapper.jsx";
+import { ThemeContext } from "@/components/ThemeContext.js";
+import { BsFillMoonFill } from "react-icons/bs";
 
 type Props  = {
 		params: {
@@ -17,8 +20,9 @@ type Props  = {
 
 export default function CountryInfo (Props :FC<Props>){
 	let countries = useContext(CountryContext)
-    const pathname = usePathname()
+    const pathname = usePathname("/")
 	const [country, setCountry] = useState([])
+	const [darkMode, setDarkMode] = useState(true)
 	console.log(country)
 	console.log(Props.params.slug)
 	console.log({countries})
@@ -29,14 +33,28 @@ export default function CountryInfo (Props :FC<Props>){
 	}, [countries])
 	console.log(country[0])
 	return (
-		<>
+		<ThemeContextWrapper>
+			<header className="restHeader">
+				<h2>Where in the world?</h2>
+					<ThemeContext.Consumer>
+					{({changeTheme}) =>(
+						<i className="themeIcon"
+							onClick={() => {
+								setDarkMode(!darkMode)
+								changeTheme(darkMode ? themes.light : themes.dark)
+							}}
+							>
+							<BsFillMoonFill />
+							<p>{darkMode ? "Light Mode" :"Dark Mode"}</p>
+						</i>
+						)}
+					</ThemeContext.Consumer> 
+			</header>
 			{country.length != 0 ?
 				<div className="countryCtnr">
-					<Link href={pathname}>
-						<button className="backButton">
+					<Link href="/" replace className="backButton">
 							<AiOutlineArrowLeft />
 							Back
-						</button>
 					</Link>
 					<div className="countryInfo">
 						<img src={country[0].flags.png} alt={country[0].flags.alt} />
@@ -63,6 +81,6 @@ export default function CountryInfo (Props :FC<Props>){
 				</div>
 			: null
 			}
-		</>
+		</ThemeContextWrapper>
 	);
 }
