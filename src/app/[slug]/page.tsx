@@ -31,7 +31,7 @@ export default function CountryInfo (Props :FC<Props>){
 	useEffect(() => {
 		setCountry(countries.filter((value) => {return (value.name.common).replace(/ /g,"") == (Props.params.slug).replace(/ /g,"")}))
 		console.log({country})
-	}, [countries])
+	}, [countries, Props.params.slug])
 	console.log(country[0])
 	return (
 		<ThemeContextWrapper>
