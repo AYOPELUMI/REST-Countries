@@ -4,7 +4,7 @@ import {IoIosArrowDown} from "react-icons/io"
 export function SearchComponent (props) {
 	const {
 		updateSearchedCountries,
-		newCountries,
+		countries,
 		updateIsSelectedCountry,
 		updateSearchedValue,
 		updateOpen
@@ -22,7 +22,7 @@ export function SearchComponent (props) {
 	 const handleMenuItem = (event) => {
 		let index = event.target.getAttribute("value");
 		console.log(index)
-		index == "None" ? updateSearchedCountries(newCountries) :	updateSearchedCountries(newCountries.filter((value) => { return value.region == index}));
+		index == "None" ? updateSearchedCountries(countries) :	updateSearchedCountries(countries.filter((value) => { return value.region == index}));
 		setOpen(false);
   	};
 
@@ -31,7 +31,7 @@ export function SearchComponent (props) {
 				console.log({searchword})
 				// updateSearchedValue(searchword)
 setSearchedValue(null)
-		searchword !="" ? updateSearchedCountries(newCountries.filter((value) => {return (value.name.common.toUpperCase()).includes(searchword.toUpperCase())})) : updateSearchedCountries(newCountries);
+		searchword !="" ? updateSearchedCountries(countries.filter((value) => {return (value.name.common.toUpperCase()).includes(searchword.toUpperCase())})) : updateSearchedCountries(countries);
 				updateIsSelectedCountry(false);
 	};
 
