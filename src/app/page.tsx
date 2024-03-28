@@ -71,30 +71,30 @@ export default  function Home() {
 
 	
 	return(
-				<div className="restBody">
-						<header className="restHeader">
-							<h2>Where in the world?</h2>
-								<ThemeContext.Consumer>
-								{({changeTheme}) =>(
-									<i className="themeIcon"
-										onClick={() => {
-											setDarkMode(!darkMode)
-											changeTheme(darkMode ? themes.light : themes.dark)
-										}}
-										>
-										<BsFillMoonFill />
-										<p>{darkMode ? "Light Mode" :"Dark Mode"}</p>
-									</i>
-									)}
-								</ThemeContext.Consumer> 
-						</header>
-							<SearchComponent
-								updateSearchedCountries={updateSearchedCountries}
-								countries={countries}
-							/>
-							<div className="countriesCtnr">
-								{searchedCountries.length == 0 ? "Oops, no country found" :CountryArray}
-							</div>
-				</div> 	
+		<div className="restBody">
+				<header className="restHeader">
+					<h2>Where in the world?</h2>
+						<ThemeContext.Consumer>
+						{({changeTheme}) =>(
+							<i className="themeIcon"
+								onClick={() => {
+									setDarkMode(!darkMode)
+									changeTheme(darkMode ? themes.light : themes.dark)
+								}}
+								>
+								<BsFillMoonFill />
+								<p>{darkMode ? "Light Mode" :"Dark Mode"}</p>
+							</i>
+							)}
+						</ThemeContext.Consumer> 
+				</header>
+					<SearchComponent
+						updateSearchedCountries={updateSearchedCountries}
+						countries={countries}
+					/>
+					<div className="countriesCtnr">
+						{searchedCountries.length == 0 ? "Oops, no country found" :CountryArray}
+					</div>
+		</div>
   );
 }

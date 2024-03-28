@@ -64,7 +64,7 @@ export default function CountryInfo (props: CountryInfoProps) {
 	}, [countries, params.slug])
 	console.log(country[0])
 	return (
-		<ThemeContextWrapper>
+		<>
 			<header className="restHeader">
 				<h2>Where in the world?</h2>
 					<ThemeContext.Consumer>
@@ -112,6 +112,6 @@ export default function CountryInfo (props: CountryInfoProps) {
 				</div>
 			: null
 			}
-		</ThemeContextWrapper>
+		</>
 	);
 }
