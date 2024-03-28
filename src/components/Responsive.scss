@@ -27,13 +27,16 @@
             flex-direction: column;
             width: 100%;
             gap: 16px;
+            top: 45px;
+            align-items: center;
 
             .searchInput{
                 width: 90%;
-                padding: 6px 12px;
+                padding: 9px 12px;
             }
             .dropdown{
                 width: fit-content;
+                align-self: center;
             }
         }
         .countriesCtnr{

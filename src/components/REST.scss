@@ -1,5 +1,6 @@
 .restBody{
-	width: 100vw;
+	min-width: 100vw;
+	overflow: scroll;
 	height: 100vh;
 	background: #f4f4f4;
 	position: relative;
@@ -11,9 +12,12 @@
 		font-size: 28px;
 		color: var(--header-color);
 		justify-content: space-between;
-		position: static;
 		background: var(--REST-Header-bg-color);
 		border-bottom: 1px solid var(--font-color);
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index:10;
 		
 		h2{
 			font-size: 32px;
@@ -38,7 +42,10 @@
 		padding: 30px 60px;
 		justify-content: space-between;
 		background: var(--REST-Countries-Container-bg-color);
-
+		position: fixed;
+		width:100%;
+		top: 100px;
+		z-index:10;
 		.searchInput{
 			width: 400px;
 			padding: 12px 20px;
@@ -104,7 +111,7 @@
 	}
 	.countriesCtnr{
 		display: grid;
-		grid-template-columns:repeat(4, minmax(min(10rem, 100%), 1fr));
+		grid-template-columns:repeat(4, minmax(min(10rem, 50%), 1fr));
 		grid-template-rows: repeat(3,400px);
 		width: 100%;
 		padding: 30px 60px;

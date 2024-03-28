@@ -9,7 +9,6 @@ import { BsFillMoonFill } from "react-icons/bs";
 import {CountryTemplate} from "../components/CountryTemplate"
 import {SearchComponent} from "../components/SearchComponent"
 import { CountryContext } from "@/components/Context/CountryContext";
-import {ThemeContextWrapper} from "@/components/ThemeContextWrapper"
 import {ThemeContext, themes} from "@/components/ThemeContext"
 
 type countryProps = {
@@ -72,7 +71,6 @@ export default  function Home() {
 
 	
 	return(
-			<ThemeContextWrapper>
 				<div className="restBody">
 						<header className="restHeader">
 							<h2>Where in the world?</h2>
@@ -98,6 +96,5 @@ export default  function Home() {
 								{searchedCountries.length == 0 ? "Oops, no country found" :CountryArray}
 							</div>
 				</div> 	
-			</ThemeContextWrapper>
   );
 }
