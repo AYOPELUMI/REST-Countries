@@ -4,30 +4,48 @@ import {useEffect, useState, useContext} from "react"
 import Link from "next/link"
 import "../components/REST.scss"
 import "../components/index.css" 
-import {AiOutlineArrowLeft} from "react-icons/ai"
 import { BsFillMoonFill } from "react-icons/bs";
-import {ThemeContextWrapper} from "../components/ThemeContextWrapper"
-import {ThemeContext, themes} from "../components/ThemeContext"
 import {CountryTemplate} from "../components/CountryTemplate"
 import {SearchComponent} from "../components/SearchComponent"
 import { CountryContext } from "@/components/Context/CountryContext";
+import {ThemeContextWrapper} from "@/components/ThemeContextWrapper"
+import {ThemeContext, themes} from "@/components/ThemeContext"
 
+type countryProps = {
+	borders:[[prop:any]],
+	cca3:string
+	cioc:string
+	name:{
+		common:string
+	}
+	flags:{
+		alt:string,
+		png:string
+	}
+	population: string
+	region:string
+	subregion:string,
+	capital:string,
+	tld?:any,
+	languages:[]
+	currencies: {
+		[prop:string]:{
+			name:string
+	}}
+}[]
 
 export default  function Home() {
-	const [darkMode, setDarkMode] = useState(true)
-	const [searchedValue, setSearchedValue] = useState("")
+	const [darkMode, setDarkMode] = useState<boolean>(true)
 	const CountryArray= [];
-	const newCountries = useContext(CountryContext)
-
-
-	console.log({newCountries})
-	const [searchedCountries, setSearchedCountries] = useState([]);
+	const countries:countryProps = useContext(CountryContext)
+	console.log({countries})
+	const [searchedCountries, setSearchedCountries] = useState<countryProps>([]);
 	console.log({searchedCountries})
-	const [isSelectedCountry, setIsSelectedCountry] = useState(false);
+
 
 	useEffect(() => {
-		setSearchedCountries(newCountries)
-	}, [newCountries])
+		setSearchedCountries(countries)
+	}, [countries])
 
 
 
@@ -37,23 +55,17 @@ export default  function Home() {
 			<Link key={i} href={`${(searchedCountries[i].name.common).replace(/ /g, "")}`}>
 				<CountryTemplate 
 					country={searchedCountries[i]}
-					Key={i}
-					index={i}
+					key={i}
 				/>
 			</Link>
 			)
 		CountryArray.push(Country_El)
 	}
 
-	function updateSearchedCountries (args) {
+	function updateSearchedCountries (args:any) {
 		setSearchedCountries(args)
 	}
-	function updateIsSelectedCountry (args) {
-		setIsSelectedCountry(args)
-	}
-	function updateSearchedValue (args) {
-		setSearchedValue(args)
-	}
+
 
 
 
@@ -77,19 +89,13 @@ export default  function Home() {
 									)}
 								</ThemeContext.Consumer> 
 						</header>
-						{isSelectedCountry == false ? 
-						<>
 							<SearchComponent
 								updateSearchedCountries={updateSearchedCountries}
-								newCountries={newCountries}
-								updateIsSelectedCountry={updateIsSelectedCountry}
-								updateSearchedValue={updateSearchedValue}
-								mainSearchedValue={searchedValue}
+								countries={countries}
 							/>
 							<div className="countriesCtnr">
-								{searchedCountries.length == "0" ? "Oops, no country found" :CountryArray}
+								{searchedCountries.length == 0 ? "Oops, no country found" :CountryArray}
 							</div>
-						</> : null }
 				</div> 	
 			</ThemeContextWrapper>
   );

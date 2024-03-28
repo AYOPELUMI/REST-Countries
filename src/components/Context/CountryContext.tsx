@@ -1,16 +1,18 @@
 'use client'
-import { createContext, useEffect, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 
 export const CountryContext = createContext([])
 
-export default function CountryContextWrapper(Props) {
+export default function CountryContextWrapper(Props:{
+    children:ReactNode
+}) {
     const [countries, setCountries] = useState([])
 
     async function getData () {
         const response = await fetch('https://restcountries.com/v3.1/all')
         const data = await response.json()
     
-        let sortedData = data.sort(function(a,b){
+        let sortedData = data.sort(function(a:any,b:any){
             let x = a.name.common.toLowerCase();
             let y = b.name.common.toLowerCase();
             if (x < y) {return -1;}

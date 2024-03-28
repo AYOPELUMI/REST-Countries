@@ -1,38 +1,59 @@
 import {useState} from "react"
 import {IoIosArrowDown} from "react-icons/io"
 
-export function SearchComponent (props) {
+type countryProps = {
+	borders:[[prop:any]],
+	cca3:string
+	cioc:string
+	name:{
+		common:string
+	}
+	flags:{
+		alt:string,
+		png:string
+	}
+	population: string
+	region:string
+	subregion:string,
+	capital:string,
+	tld?:any,
+	languages:[]
+	currencies: {
+		[prop:string]:{
+			name:string
+	}}
+}[]
+
+export function SearchComponent (props:{
+	updateSearchedCountries: (args:any) => void,
+	countries: countryProps
+}) {
 	const {
 		updateSearchedCountries,
 		countries,
-		updateIsSelectedCountry,
-		updateSearchedValue,
-		updateOpen
 	} = props
 	console.log({props})
 	const Country_Region = ["None",'Africa','Americas','Asia','Europe','Oceania']
 	const ListArray = [];
-	const[searchedValue, setSearchedValue] = useState(null)
-	const [open, setOpen] =useState(false)
+	const[searchedValue, setSearchedValue] = useState<any>(null)
+	const [open, setOpen] =useState<boolean>(false)
 
 	const handleOpen = () => {
 		setOpen(!open);
 	};
 
-	 const handleMenuItem = (event) => {
+	 const handleMenuItem = (event:any) => {
 		let index = event.target.getAttribute("value");
 		console.log(index)
-		index == "None" ? updateSearchedCountries(countries) :	updateSearchedCountries(countries.filter((value) => { return value.region == index}));
+		index == "None" ? updateSearchedCountries(countries) :	updateSearchedCountries(countries.filter((value:{region:string}) => { return value.region == index}));
 		setOpen(false);
   	};
 
-  	const handleSearch = (event) => {
-				let searchword = event.target.value;
-				console.log({searchword})
-				// updateSearchedValue(searchword)
-setSearchedValue(null)
-		searchword !="" ? updateSearchedCountries(countries.filter((value) => {return (value.name.common.toUpperCase()).includes(searchword.toUpperCase())})) : updateSearchedCountries(countries);
-				updateIsSelectedCountry(false);
+  	const handleSearch = (event:any) => {
+		let searchword = event.target.value;
+		console.log({searchword})
+		setSearchedValue(null)
+		searchword !="" ? updateSearchedCountries(countries.filter((value:{name:{common:string}}) => {return (value.name.common.toUpperCase()).includes(searchword.toUpperCase())})) : updateSearchedCountries(countries);
 	};
 
 	for (var i = 0; i < 5; i++) {

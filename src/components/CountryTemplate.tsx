@@ -1,20 +1,46 @@
+/* eslint-disable @next/next/no-img-element */
 import {numberFormat} from "./numberFormat"
-import countries from "./FetchData"
-export function CountryTemplate (props) { 
-		const { 
-			country,
-			onClick,
-			Key,
-			index
-		} = props; 
+
+type CountryTemplateProps = {
+	country: countryProps
+	key: number
+}
+type countryProps = {
+	borders:[[prop:any]],
+	cca3:string
+	cioc:string
+	name:{
+		common:string
+	}
+	flags:{
+		alt:string,
+		png:string
+	}
+	population: string
+	region:string
+	subregion:string,
+	capital:string,
+	tld?:any,
+	languages:[]
+	currencies: {
+		[prop:string]:{
+			name:string
+	}}
+}
+export function CountryTemplate (props:CountryTemplateProps) { 
+	const{
+		country,
+		key
+	} = props
 		return(
-			<button className="country" index={index} onClick={onClick} key={Key}>
-				<img src={country.flags.png} index={index} alt={country.flags.alt} /> 
-				<p className="countryName" index={index} style={{ textAlign :name.length>16 ? "center": undefined}} >{country.name.common}</p> 
+			<button className="country" key={key} >
+				
+				<img src={country.flags.png} alt={country.flags.alt} />
+				<p className="countryName">{country.name.common}</p> 
 				<div >
-					<p index={index}><span>Population: </span>{numberFormat(country.population)}</p>
-					<p index={index}><span>Region: </span>{country.region}</p>
-					<p index={index}><span>Capital: </span>{country.capital}</p>
+					<p><span>Population: </span>{numberFormat(country.population)}</p>
+					<p><span>Region: </span>{country.region}</p>
+					<p><span>Capital: </span>{country.capital}</p>
 				</div>
 			</button> 
 		) 

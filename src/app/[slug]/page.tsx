@@ -1,35 +1,67 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @next/next/no-img-element */
 'use client'
 import Link from "next/link";
 import {AiOutlineArrowLeft} from "react-icons/ai"
 import { FC, useContext, useEffect, useState } from "react";
-import {useSearchParams, usePathname} from "next/navigation";
 import { numberFormat } from "../../components/numberFormat.js"
 import {BorderComponent} from "../../components/BorderComponent"
 import { CountryContext } from "@/components/Context/CountryContext";
 import "../../components/index.css"
 import "../../components/REST.scss"
 import"@/components/Responsive.scss"
-import { ThemeContextWrapper } from "@/components/ThemeContextWrapper.jsx";
-import { ThemeContext } from "@/components/ThemeContext.js";
+import { ThemeContextWrapper } from "@/components/ThemeContextWrapper";
+import { ThemeContext, themes } from "@/components/ThemeContext";
 import { BsFillMoonFill } from "react-icons/bs";
 
+type CountryInfoProps  = {
+		params: {
+			slug: String
+		}
+}
+type countryProps = {
+	borders:string[],
+	cca3:string
+	cioc:string
+	name:{
+		common:string
+	}
+	flags:{
+		alt:string,
+		png:string
+	}
+	population: string
+	region:string
+	subregion:string,
+	capital:string,
+	tld?:any,
+	languages:[]
+	currencies: {
+		[prop:string]:{
+			name:string
+	}}
+}[]
+function sum(x: number, y: number) {
+	return x + y
+}
 
-export default function CountryInfo (Props){
+
+
+
+export default function CountryInfo (props: CountryInfoProps) {
 	const {
 		params
-	} = Props
-	let countries = useContext(CountryContext)
-    const pathname = usePathname("/")
-	const [country, setCountry] = useState([])
-	const [darkMode, setDarkMode] = useState(true)
+	} = props
+	let countries:countryProps = useContext(CountryContext)
+	const [country, setCountry] = useState<countryProps>([])
+	const [darkMode, setDarkMode] = useState<boolean>(true)
 	console.log(country)
-	console.log(Props.params.slug)
 	console.log({countries})
 
 	useEffect(() => {
-		setCountry(countries.filter((value) => {return (value.name.common).replace(/ /g,"") == (Props.params.slug).replace(/ /g,"")}))
+		setCountry(countries.filter((value:any) => {return (value.name.common).replace(/ /g,"") == (params.slug).replace(/ /g,"")}))
 		console.log({country})
-	}, [countries, Props.params.slug])
+	}, [countries, params.slug])
 	console.log(country[0])
 	return (
 		<ThemeContextWrapper>

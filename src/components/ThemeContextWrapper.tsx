@@ -1,10 +1,10 @@
 import {useState, useEffect} from "react"
-import {ThemeContext, themes} from "./ThemeContext.js"
+import {ThemeContext, themes} from "./ThemeContext.jsx"
 
-export function ThemeContextWrapper (props) {
+export function ThemeContextWrapper (props:any) {
 	const [theme, setTheme] = useState(themes.dark)
 
-	function changeTheme (theme) {
+	function changeTheme (theme:any) {
 		setTheme(theme)
 	}
 
