@@ -7,7 +7,7 @@ type CountryTemplateProps = {
 }
 type countryProps = {
 	borders:[[prop:any]],
-	cca3:string
+	cca3 ?:string
 	cioc:string
 	name:{
 		common:string

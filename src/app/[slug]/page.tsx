@@ -41,11 +41,6 @@ type countryProps = {
 			name:string
 	}}
 }[]
-function sum(x: number, y: number) {
-	return x + y
-}
-
-
 
 
 export default function CountryInfo (props: CountryInfoProps) {
@@ -61,10 +56,39 @@ export default function CountryInfo (props: CountryInfoProps) {
 	useEffect(() => {
 		setCountry(countries.filter((value:any) => {return (value.name.common).replace(/ /g,"") == (params.slug).replace(/ /g,"")}))
 		console.log({country})
+
+		let nativeCountryName
+
+		// Object.keys(country.name.nativeName)[Object.keys(country.name).length - 1]
+		
+		console.log({nativeCountryName})
+		// for(let key in  country[0].name.nativeName){
+		// 		 let nativeCountryName= key.common
+		// }
 	}, [countries, params.slug])
 	console.log(country[0])
+
+	let nativeCountryName;
+
+	if (country[0] != undefined){
+
+        nativeCountryName = country[0].name.nativeName[Object.keys(country[0].name.nativeName)[Object.keys(country[0].name.nativeName).length - 1]]
+		console.log({nativeCountryName})
+	}
+	let arrayNoCountries =[];
+	if(country[0] == undefined){
+		arrayNoCountries = countries.filter((value:{name:{common:string}}) => {
+			return ((value.name.common).replace(/ /g,"")).includes((params.slug).replace(/ /g,""))
+		})
+		 console.log({arrayNoCountries})
+	}
 	return (
 		<>
+		<head>
+			<title>{params.slug}</title>
+			<link rel="icon" href={country[0]?.flags.svg} sizes="any" />
+		</head>
+		<body className="restBody" >
 			<header className="restHeader">
 				<h2>Where in the world?</h2>
 					<ThemeContext.Consumer>
@@ -92,7 +116,7 @@ export default function CountryInfo (props: CountryInfoProps) {
 						<div className="infoCtnr">
 							<h3>{country[0].name.common}</h3>
 							<div className="moreInfo">
-								{/* <span>Native Name :	<p>{country[0].name.nativeName}</p></span> */}
+								<span>Native Name :	<p>{nativeCountryName.common}</p></span>
 								<span>Population : <p>{numberFormat(country[0].population)}</p></span>
 								<span>Region : <p>{country[0].region}</p></span>
 								<span>Sub Region : <p>{country[0].subregion}</p></span>
@@ -110,8 +134,21 @@ export default function CountryInfo (props: CountryInfoProps) {
 						</div>
 					</div>
 				</div>
-			: null
+			: <div className="noCountryCtnr">
+				<h1>"oops,no country found!!!"</h1>
+				<Link href="/" replace className="backButton">
+							<AiOutlineArrowLeft />
+							Home Page
+					</Link>
+				<span>Do you mean ?</span>
+				<div className="countryDiv">
+					{arrayNoCountries.map((value, index) => {
+						return 	<Link key={index} className="borderBtn" href={`${(value.name.common).replace(/ /g,"")}`}>{value.name.common.toUpperCase()}</Link>
+					})}
+					</div>
+				</div>
 			}
+			</body>
 		</>
 	);
 }

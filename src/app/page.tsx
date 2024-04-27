@@ -55,7 +55,7 @@ export default  function Home() {
 			<Link key={i} href={`${(searchedCountries[i].name.common).replace(/ /g, "")}`}>
 				<CountryTemplate 
 					country={searchedCountries[i]}
-					key={i}
+					
 				/>
 			</Link>
 			)
@@ -71,7 +71,13 @@ export default  function Home() {
 
 	
 	return(
-		<div className="restBody">
+		<>
+			<head>
+        		<title>REST COUNTRIES</title>
+				<link rel="icon" href="/favicon.ico" sizes="48x48" />
+      		</head>
+			<body>
+				<div className="restBody">
 				<header className="restHeader">
 					<h2>Where in the world?</h2>
 						<ThemeContext.Consumer>
@@ -95,6 +101,8 @@ export default  function Home() {
 					<div className="countriesCtnr">
 						{searchedCountries.length == 0 ? "Oops, no country found" :CountryArray}
 					</div>
-		</div>
+				</div>
+			</body>
+		</>
   );
 }
