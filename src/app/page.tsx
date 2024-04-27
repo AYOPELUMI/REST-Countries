@@ -2,7 +2,6 @@
 import Image from "next/image";
 import {useEffect, useState, useContext} from "react"
 import Link from "next/link"
-import "../components/REST.scss"
 import "../components/Responsive.scss"
 import "../components/index.css" 
 import { BsFillMoonFill } from "react-icons/bs";

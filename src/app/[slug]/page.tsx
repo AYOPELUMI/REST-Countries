@@ -8,8 +8,6 @@ import { numberFormat } from "../../components/numberFormat.js"
 import {BorderComponent} from "../../components/BorderComponent"
 import { CountryContext } from "@/components/Context/CountryContext";
 import "../../components/index.css"
-import "../../components/REST.scss"
-import"@/components/Responsive.scss"
 import { ThemeContextWrapper } from "@/components/ThemeContextWrapper";
 import { ThemeContext, themes } from "@/components/ThemeContext";
 import { BsFillMoonFill } from "react-icons/bs";

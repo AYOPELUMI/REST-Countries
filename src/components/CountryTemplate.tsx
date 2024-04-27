@@ -38,9 +38,9 @@ export function CountryTemplate (props:CountryTemplateProps) {
 				<img src={country.flags.png} alt={country.flags.alt} />
 				<p className="countryName">{country.name.common}</p> 
 				<div >
-					<p><span>Population: </span>{numberFormat(country.population)}</p>
-					<p><span>Region: </span>{country.region}</p>
-					<p><span>Capital: </span>{country.capital}</p>
+					<span><p>Population: </p>{numberFormat(country.population)}</span>
+					<span><p>Region: </p>{country.region}</span>
+					<span><p>Capital: </p>{country.capital}</span>
 				</div>
 			</button> 
 		) 

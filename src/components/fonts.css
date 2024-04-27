@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'Futura';
+    src: local('Futura'),url(./Fonts/futura-lt-cufonfonts/FuturaLT.ttf)  format('truetype');
+}
+
+@font-face {
+    font-family: 'Futura Bold';
+    src: local('Futura'),url(./Fonts/futura-lt-cufonfonts/FuturaLT-CondensedBold.ttf)  format('truetype');
+}
+
+@font-face {
+    font-family: 'Futura Light Oblique';
+    src: local('Futura'),url(./Fonts/futura-lt-cufonfonts/FuturaLT-LightOblique.ttf)  format('truetype');
+}
+@font-face {
+    font-family: 'Futura Light ';
+    src: local('Futura'),url(./Fonts/futura-lt-cufonfonts/FuturaLT-Light.ttf)  format('truetype');
+}
