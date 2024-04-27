@@ -7,6 +7,7 @@ import "@/components/REST.scss"
 import "@/components/Responsive.scss"
 import CountryContextWrapper from "@/components/Context/CountryContext";
 import { ThemeContextWrapper } from "@/components/ThemeContextWrapper";
+import { useEffect, useState } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 
@@ -15,11 +16,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+
   return (
     <html lang="en">
       <CountryContextWrapper>
           <ThemeContextWrapper>
-            {children}
+             {children}
           </ThemeContextWrapper>
       </CountryContextWrapper>
     </html>

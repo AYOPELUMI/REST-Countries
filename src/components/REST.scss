@@ -151,22 +151,23 @@
 				font-weight: 600;
 				margin: 30px 0px;
 				margin-bottom: 16px;
+				margin-left: 20px;
 				font-size: 24px;
 				color: var(--header-color);
 			}
 			span{
 				font-size: 15px;
 				color: var(--font-color);
-				font-weight: lighter;
+				font-weight: 800;
 				margin-bottom: 2px;
 				text-align: left;
 				padding-left:20px;
 				display:flex;
-				font-family:Futura;
+				font-family:Futura Light Oblique;
 
 				p{
-					font-family:Futura Light Oblique;
-					padding-left:10px;
+					font-family:Futura;
+					padding-right:10px;
 				}
 			}
 		}
@@ -230,13 +231,13 @@
 					span{
 						color: var(--header-color);
 						font-size: 22px;
-						font-weight: normal;
+						font-weight: bolder;
 						display: flex;
 						margin-bottom: 4px;
 	
 						p{
 							font-family: Futura Light Oblique;
-							font-weight: lighter;
+							font-weight: 800;
 							color: var(--font-color);
 							font-size: inherit;
 						}
@@ -327,5 +328,22 @@
 				margin-bottom:4px;
 			}
 		}
+	}
+}
+
+.splashScreen{
+	width:100vw;
+	height:100vh;
+	display:flex;
+	align-items:center;
+	justify-content: center;
+	background:var(--REST-Countries-Container-bg-color);
+	transition:display 0.35s ease;
+	#logo{
+
+		color:skyblue;
+		font-size:66px;
+		font-weight: bolder;
+		font-family: Futura;
 	}
 }

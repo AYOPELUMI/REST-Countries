@@ -9,6 +9,8 @@ import {CountryTemplate} from "../components/CountryTemplate"
 import {SearchComponent} from "../components/SearchComponent"
 import { CountryContext } from "@/components/Context/CountryContext";
 import {ThemeContext, themes} from "@/components/ThemeContext"
+import SplashScreen from "@/components/SplashScreen"
+
 
 type countryProps = {
 	borders:[[prop:any]],
@@ -41,6 +43,13 @@ export default  function Home() {
 	const [searchedCountries, setSearchedCountries] = useState<countryProps>([]);
 	console.log({searchedCountries})
 
+	const [isLoading, setIsLoading] = useState<any>(true)
+
+    useEffect(() => {
+      if(isLoading){
+        return
+      }
+    }, [isLoading])
 
 	useEffect(() => {
 		setSearchedCountries(countries)
@@ -54,6 +63,7 @@ export default  function Home() {
 			<Link key={i} href={`${(searchedCountries[i].name.common).replace(/ /g, "")}`}>
 				<CountryTemplate 
 					country={searchedCountries[i]}
+					key={i}
 					
 				/>
 			</Link>
@@ -76,6 +86,9 @@ export default  function Home() {
 				<link rel="icon" href="/favicon.ico" sizes="48x48" />
       		</head>
 			<body>
+			{isLoading ? 
+                        <SplashScreen finishLoading={() => setIsLoading(false)} />
+              :
 				<div className="restBody">
 				<header className="restHeader">
 					<h2>Where in the world?</h2>
@@ -100,7 +113,7 @@ export default  function Home() {
 					<div className="countriesCtnr">
 						{searchedCountries.length == 0 ? "Oops, no country found" :CountryArray}
 					</div>
-				</div>
+				</div>}
 			</body>
 		</>
   );

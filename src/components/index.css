@@ -2,11 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Playball:wght@300;400;500;600&display=swap');
 
 :root {
-    --REST-Country-bg-color:hsl(0, 0%, 98%);
+    --REST-Country-bg-color:#f3f3f3;
     --font-color: hsl(0, 0%, 52%);
     --header-color: hsl(200, 15%, 8%);
     --REST-Header-bg-color: hsl(0, 0%, 98%);
-    --REST-Countries-Container-bg-color: hsl(0, 0%, 98%);
+    --REST-Countries-Container-bg-color: #f3f3f3;
     --REST-GoBack-btn-bg-color:hsl(0, 0%, 100%);
     --REST-li-hover: lightgray;
 }
@@ -21,7 +21,7 @@
     --REST-li-hover: #1b1818;
 }
 *{
-	font-family: Futura, sans-serif;
+	font-family: Futura;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
