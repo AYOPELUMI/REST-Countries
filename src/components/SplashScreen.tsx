@@ -12,78 +12,28 @@ const SplashScreen = ({ finishLoading }:any) => {
         targets: '#logo',
         keyframes: [
           {translateY: -40},
-          {translateX: 250},
+          {translateX: 100},
           {translateY: 40},
           {translateX: 0},
           {translateY: 0}
         ],
-        duration: 4000,
+        duration: 2000,
         easing: 'easeOutElastic(1, .8)',
       })
       .add({
         targets: '#logo',
         keyframes: [
           {translateY: -40},
-          {translateX: 250},
+          {translateX: 100},
           {translateY: 40},
           {translateX: 0},
           {translateY: 0}
         ],
-        duration: 4000,
+        duration: 2000,
         easing: 'easeOutElastic(1, .8)',
       })
-      .add({
-        targets: '#logo',
-        keyframes: [
-          {translateY: -40},
-          {translateX: 250},
-          {translateY: 40},
-          {translateX: 0},
-          {translateY: 0}
-        ],
-        duration: 4000,
-        easing: 'easeOutElastic(1, .8)',
-      })
-      .add({
-        targets: '#logo',
-        keyframes: [
-          {translateY: -40},
-          {translateX: 250},
-          {translateY: 40},
-          {translateX: 0},
-          {translateY: 0}
-        ],
-        duration: 4000,
-        easing: 'easeOutElastic(1, .8)',
-      })
-     .add({
-        targets: "#logo",
-        delay: 100,
-        scale: 1,
-        duration: 500,
-        easing: "easeInOutExpo",
-      })
-      .add({
-        targets: "#logo",
-        delay: 100,
-        scale: 1,
-        duration: 500,
-        easing: "easeInOutExpo",
-      })
-      .add({
-        targets: "#logo",
-        delay: 100,
-        scale: 1,
-        duration: 500,
-        easing: "easeInOutExpo",
-      })
-      .add({
-        targets: "#logo",
-        delay: 100,
-        scale: 1,
-        duration: 500,
-        easing: "easeInOutExpo",
-      })
+
+
 
     }
   

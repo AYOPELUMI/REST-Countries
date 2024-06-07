@@ -1,5 +1,6 @@
 import {useState} from "react"
 import {IoIosArrowDown} from "react-icons/io"
+import { FaSearch } from "react-icons/fa";
 
 type countryProps = {
 	borders:[[prop:any]],
@@ -67,7 +68,10 @@ export function SearchComponent (props:{
 
 	return(
 		<div className="searchCtnr">
-			<input type="search" className="searchInput" placeholder="search by name" onChange={handleSearch} />
+			<label>
+				<FaSearch />
+				<input type="search" className="searchInput" placeholder="search by name" onChange={handleSearch} />
+			</label>
 				<button onClick={handleOpen} className="dropdown">{(searchedValue  != "None" && searchedValue != null)? searchedValue : "Filter By Region" } <IoIosArrowDown />
 				{open ? (
 						<ul className="dropdownMenu">

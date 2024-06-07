@@ -57,7 +57,7 @@ console.log({countries})
 	else
 	{
 		console.error("no borders")
-		bdrArray.push(<h2>No border Country</h2>)
+		bdrArray.push(<h2 key={0}>No border Country</h2>)
 	}
 	console.log(bdrArray)
 	return (

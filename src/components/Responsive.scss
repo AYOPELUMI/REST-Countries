@@ -56,10 +56,14 @@
                     height: 110px;
                 }
                 .countryName{
-                    margin: 7px 0px;
+                    margin: 7px 20px;
                     font-size: 18px;
                 }
                 div{
+                    span{
+                        font-size: 12px;
+                        align-items: center;
+                    }
                     p{
                         text-wrap: balance;
                         font-size: 12px;
@@ -112,4 +116,16 @@
             }
         }
     }
+}
+
+.splashScreen{
+@include xs{
+	#logo{
+
+		color:skyblue;
+		font-size:16px;
+		font-weight: bolder;
+		font-family: Futura;
+	}
+}
 }

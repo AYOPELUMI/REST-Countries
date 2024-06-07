@@ -3,7 +3,7 @@ import {numberFormat} from "./numberFormat"
 
 type CountryTemplateProps = {
 	country: countryProps
-	key: number
+	Key: number
 }
 type countryProps = {
 	borders:[[prop:any]],
@@ -30,10 +30,10 @@ type countryProps = {
 export function CountryTemplate (props:CountryTemplateProps) { 
 	const{
 		country,
-		key
+		Key
 	} = props
 		return(
-			<button className="country" key={key} >
+			<button className="country" key={Key} >
 				
 				<img src={country.flags.png} alt={country.flags.alt} />
 				<p className="countryName">{country.name.common}</p> 
