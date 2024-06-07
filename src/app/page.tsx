@@ -63,7 +63,7 @@ export default  function Home() {
 			<Link key={i} href={`${(searchedCountries[i].name.common).replace(/ /g, "")}`}>
 				<CountryTemplate 
 					country={searchedCountries[i]}
-					Keyey={i}
+					Key={i}
 					
 				/>
 			</Link>
